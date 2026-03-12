@@ -57,8 +57,8 @@ export async function listaPedidos(
  * @param {*} opciones
  * @returns {Promise<Array>} - Una promesa que resuelve en un arreglo de pedidos.
  */
-export async function listaAllPedidos(opciones) {
-  return await listaPedidos({}, opciones);
+export async function listaAllPedidos(clienteId, opciones) {
+  return await listaPedidos({ cliente: clienteId }, opciones);
 }
 /**
  * Funcion para obtener una lista de pedidos filt°rados por nombre del cliente.
@@ -66,8 +66,8 @@ export async function listaAllPedidos(opciones) {
  * @param {*} opciones
  * @returns {Promise<Array>} - Una promesa que resuelve en un arreglo de pedidos.
  */
-export async function listaPedidosByNombre(nombre, opciones) {
-  return await listaPedidos({ nombre }, opciones);
+export async function listaPedidosByNombre(clienteId, nombre, opciones) {
+  return await listaPedidos({ cliente: clienteId, nombre }, opciones);
 }
 /**
  * Funcion para obtener una lista de pedidos filtrados por teléfono del cliente.
@@ -75,8 +75,8 @@ export async function listaPedidosByNombre(nombre, opciones) {
  * @param {*} opciones
  * @returns {Promise<Array>} - Una promesa que resuelve en un arreglo de pedidos.
  */
-export async function listPedidosByPagado(pagado, opciones) {
-  return await listaPedidos({ pagado }, opciones);
+export async function listPedidosByPagado(clienteId, pagado, opciones) {
+  return await listaPedidos({ cliente: clienteId, pagado }, opciones);
 }
 /**
  * Funcion para obtener un pedido específico por su ID.

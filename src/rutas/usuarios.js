@@ -1,4 +1,5 @@
 import { createUsuario, loginUsuario, getUsuarioInfoById, getAllUsuarios } from '../servicios/usuarios.js'
+import { verificarToken } from '../middlewares/auth.js'
 
 export function usuarioRoutes(app) {
 
@@ -20,12 +21,12 @@ export function usuarioRoutes(app) {
     }
   })
 
-  app.get('/api/v1/usuarios/:id', async (req, res) => {
+  app.get('/api/v1/usuarios/:id', verificarToken, async (req, res) => {
     const userInfo = await getUsuarioInfoById(req.params.id)
     return res.status(200).send(userInfo)
   })
 
-  app.get('/api/v1/usuarios', async (req, res) => {
+  app.get('/api/v1/usuarios', verificarToken, async (req, res) => {
     try {
       const usuarios = await getAllUsuarios()
       return res.status(200).json(usuarios)
