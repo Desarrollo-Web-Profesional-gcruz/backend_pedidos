@@ -36,3 +36,7 @@ export async function getUsuarioInfoById(userId) {
     return { username: userId }
   }
 }
+
+export async function getAllUsuarios() {
+  return await Usuario.find({}, 'username _id')
+}

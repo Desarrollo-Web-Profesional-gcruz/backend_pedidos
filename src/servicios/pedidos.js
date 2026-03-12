@@ -15,8 +15,10 @@ import { Pedido } from "../bd/modelos/pedido.js";
  * @returns {Promise<Pedido>} - El pedido creado en la base de datos.
  */
 export async function creaPedido({
+  cliente,
   nombre,
   telefono,
+  direccion,
   fecha_solicitud,
   fecha_envio,
   total,
@@ -25,8 +27,10 @@ export async function creaPedido({
   comentario,
 }) {
   const pedido = new Pedido({
+    cliente,
     nombre,
     telefono,
+    direccion,
     fecha_solicitud,
     fecha_envio,
     total,
@@ -91,8 +95,10 @@ export async function getPedidoById(pedidoId) {
 export async function modificaPedido(
   pedidoId,
   {
+    cliente,
     nombre,
     telefono,
+    direccion,
     fecha_solicitud,
     fecha_envio,
     total,
@@ -105,8 +111,10 @@ export async function modificaPedido(
     { _id: pedidoId },
     {
       $set: {
+        cliente,
         nombre,
         telefono,
+        direccion,
         fecha_solicitud,
         fecha_envio,
         total,

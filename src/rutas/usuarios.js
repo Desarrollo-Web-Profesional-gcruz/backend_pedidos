@@ -1,4 +1,4 @@
-import { createUsuario, loginUsuario, getUsuarioInfoById } from '../servicios/usuarios.js'
+import { createUsuario, loginUsuario, getUsuarioInfoById, getAllUsuarios } from '../servicios/usuarios.js'
 
 export function usuarioRoutes(app) {
 
@@ -23,5 +23,14 @@ export function usuarioRoutes(app) {
   app.get('/api/v1/usuarios/:id', async (req, res) => {
     const userInfo = await getUsuarioInfoById(req.params.id)
     return res.status(200).send(userInfo)
+  })
+
+  app.get('/api/v1/usuarios', async (req, res) => {
+    try {
+      const usuarios = await getAllUsuarios()
+      return res.status(200).json(usuarios)
+    } catch (err) {
+      return res.status(500).json({ error: err.message })
+    }
   })
 }
